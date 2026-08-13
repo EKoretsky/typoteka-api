@@ -19,6 +19,13 @@ class ArticleService(
             .map { it.toResponse() }
     }
 
+    fun getArticle(id: Long): ArticleResponse {
+        return articleRepository
+            .findById(id)
+            .orElseThrow { RuntimeException("ercerce  eer") }
+            .toResponse()
+    }
+
     @Transactional
     fun createArticle(request: CreateArticleRequest): ArticleResponse {
         val categories = categoryRepository
@@ -35,5 +42,4 @@ class ArticleService(
             .toResponse()
 
     }
-
 }

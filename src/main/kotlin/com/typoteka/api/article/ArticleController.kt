@@ -30,15 +30,15 @@ class ArticleController(
     @ResponseStatus(HttpStatus.OK)
     fun getArticle(
         @PathVariable("id") id: Long
-    ): Unit {
-
+    ): ArticleResponse {
+        return articleService.getArticle(id)
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createArticle(
         @Validated @RequestBody request: CreateArticleRequest
-    ): Unit {
+    ) {
         articleService.createArticle(request)
     }
 
